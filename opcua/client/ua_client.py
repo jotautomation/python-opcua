@@ -419,8 +419,8 @@ class UaClient(object):
             acks = []
         request = ua.PublishRequest()
         request.Parameters.SubscriptionAcknowledgements = acks
-        # timeout could be set to 0 (= no timeout) but some servers do not support it
-        self._uasocket.send_request(request, self._call_publish_callback, timeout=int(9e8)) # 250 days
+        # timeout 0 (= no timeout) 
+        self._uasocket.send_request(request, self._call_publish_callback, timeout=int(0)) 
 
     def _call_publish_callback(self, future):
         self.logger.info("call_publish_callback")
